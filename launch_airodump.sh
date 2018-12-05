@@ -9,12 +9,12 @@ string_mon='mon'
 
 if [ "$1" == "start" ]
 then
-	airmon-ng start "$2"
-	airodump-ng -w /tmp/"$string_date" "$2$string_mon" 
+	sudo airmon-ng start "$2"
+	sudo airodump-ng -w /tmp/"$string_date" "$2$string_mon" 
 	echo "$?"
 elif [ "$1" == "stop" ]
 then 
-	airmon-ng stop "$2$string_mon"
+	sudo airmon-ng stop "$2$string_mon"
 	echo "$?"
 elif [ "$1" == "check" ]
 then

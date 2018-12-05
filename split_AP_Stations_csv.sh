@@ -1,6 +1,7 @@
 #!/bin/bash
 #Ce script permet de spliter un fichier csv en deux à partir de la ligne contenant "Station MAC"
 #Les nouveaux fichiers sont créés dans le répertoire /tmp/
+#Après le split, on nettoie les colonnes non utiles.
 #Usage : bash ./split_AP_Stations_csv.sh name_csv_file.csv 
 
 #AMELIORER : enlever l'extension de $1 et ajouter juste bis à la fin
@@ -24,8 +25,12 @@ echo "$lenght_file"
 
 #Ecris dans un nouveau fichier les lignes des stations
 sed -n -e "$start_line, $lenght_file""p" $1 > /tmp/$str_name_new_file"station".csv
+#Ecris dans un nouveau fichier les mêmes lignes en enlevant les colonnes inutiles
+cut -d , -f 1,4-7 /tmp/$str_name_new_file"station".csv > /tmp/$str_name_new_file"station_cut".csv
+
 
 #Ecris dans un nouveau fichier les lignes des APs
 one="1"
 sed -n -e "$one,$(($start_line-1))""p" $1 > /tmp/$str_name_new_file"APs".csv
-
+#Ecris dans un nouveau fichier les mêmes lignes en enlevant les colonnes inutiles
+cut -d , -f 1,4,6-8,10,14,15 /tmp/$str_name_new_file"APs".csv > /tmp/$str_name_new_file"APs_cut".csv
