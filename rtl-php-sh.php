@@ -23,7 +23,13 @@
 if(!empty($_GET["start"])){
   $start=shell_exec('/var/www/html/script_rtl.sh start 2>&1');
 //  print_r($start);
-  echo "<pre>$start</pre>";
+//  echo "<pre>$start</pre>";
+
+  //sleep(50);
+
+  $cut=shell_exec('/var/www/html/cut.sh');
+  $db=shell_exec('/var/www/html/load.sh');
+
 }elseif (!empty($_GET["stop"])) {
   $stop=shell_exec('/var/www/html/script_rtl.sh stop');
   print_r($stop);
@@ -31,8 +37,6 @@ if(!empty($_GET["start"])){
   $status=shell_exec('/var/www/html/script_rtl.sh status');
   print_r($status);
 }
-
-
 ?>
 
 </body>

@@ -1,8 +1,9 @@
+
 #!/bin/bash
 
 case "$1" in
   start|"")
-	rtl_433 -G -q -F json:json-sh.json
+	rtl_433 -G -q -T 50 -F csv:log_csv.csv
 	;;
   stop)
 	killall -9 rtl_433
