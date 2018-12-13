@@ -10,7 +10,7 @@ string_mon='mon'
 if [ "$1" == "start" ]
 then
 	sudo airmon-ng start "$2"
-	sudo airodump-ng -w /tmp/"$string_date" "$2$string_mon" 
+	sudo timeout 50 airodump-ng -w /tmp/"$string_date" "$2$string_mon" 
 	echo "$?"
 elif [ "$1" == "stop" ]
 then 

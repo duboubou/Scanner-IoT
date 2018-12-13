@@ -83,11 +83,11 @@ do
 	echo "$var_bssid";
 	echo "$var_probe""Bonjour";
 	
-mysql -u user_IOT -ppodium123 <<EOF 
+mysql -u user_IOT -ppodium123 <<EOF2
 USE iot
 INSERT INTO Stations
 VALUES ('$var_mac_sta', '$var_power', '$var_packet_num', '$var_bssid', '$var_probe', NULL);
-EOF
+EOF2
 	
 done < /tmp/temp.txt
 
