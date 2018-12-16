@@ -11,11 +11,10 @@ str_date=$(date +%F%H%M%S)
 case "$1" in
   start|"")
 	rtl_433 -G -q -T 50 -F csv:/tmp/$str_date"RTL".csv
-	cut -d ',' -f 1,4,9,12,14,114 /tmp/$str_date"RTL".csv > /var/www/html/log_csv_cut.csv
-
+	cut -d ',' -f 1,4,9,12,14,114 /tmp/$str_date"RTL".csv > /tmp/log_csv_cut.csv
 mysql -u user_iot <<EOF
 USE db_projet_iot
-LOAD DATA LOCAL INFILE '/var/www/html/log_csv_cut.csv'
+LOAD DATA LOCAL INFILE '/tmp/log_csv_cut.csv'
 INTO TABLE table_Rtl
 FIELDS TERMINATED BY ','
 IGNORE 1 LINES;

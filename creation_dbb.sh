@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 sudo mysql <<EOF 
 
@@ -63,9 +63,6 @@ CREATE TABLE IF NOT EXISTS table_Bluetooth (
 	features VARCHAR(60)
 );
 
-DESCRIBE table_Accesspoint; 
-DESCRIBE table_Stations;
-DESCRIBE table_Rtl;
-DESCRIBE table_Bluetooth; 
 
 EOF2
+
