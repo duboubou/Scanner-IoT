@@ -1,7 +1,7 @@
 #!bin/bash
 #Script qui permet de lancer airodump-ng 
-#Enregistre les sorties sur un fichier à part dans le répertoire /tmp (VOIR COMMENT TRANSFORMER EN BDD + AMELIORER LE SCRIPT)
-#Mettre en $1 [start/stop/check]
+#Enregistre les sorties sur un fichier à part dans le répertoire /tmp 
+#Mettre en $1 [start/stop/status]
 #Mettre en $2 l'interface de votre machine (voir commande airmon-ng)
 
 string_date=$(date +%F%H%M%S)
@@ -16,10 +16,10 @@ elif [ "$1" == "stop" ]
 then 
 	sudo airmon-ng stop "$2$string_mon"
 	echo "$?"
-elif [ "$1" == "check" ]
+elif [ "$1" == "status" ]
 then
-	echo "ok"
-	echo "$?"
+	echo "Impossible de savoir si le processus Aircrack-ng est toujours en fonctionnement. Si votre wifi ne fonctionne pas, essayer sudo airmon-ng stop [interface]mon."
+
 else
 	echo "Bad argument"
 fi

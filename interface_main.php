@@ -42,7 +42,7 @@ if(!empty($_GET["start"])){
 	$stasta=shell_exec('/var/www/html/project/launch_rtl.sh status');
 	print_r($stasta);
 
-	$pinpin=shell_exec('/var/www/html/project/launch_airodump.sh check wlo1');
+	$pinpin=shell_exec('/var/www/html/project/launch_airodump.sh status wlo1');
 	print_r($pinpin);
 }
 ?>

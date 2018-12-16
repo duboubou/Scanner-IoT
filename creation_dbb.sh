@@ -21,6 +21,7 @@ CREATE DATABASE db_projet_iot;
 USE db_projet_iot
 CREATE TABLE IF NOT EXISTS table_Accesspoint (
 	bssid CHAR(17),
+	last_time_seen DATETIME, 
 	channel TINYINT,
 	privacy VARCHAR(20),
 	cipher VARCHAR(20),
@@ -35,12 +36,12 @@ ENGINE=INNODB;
 
 
 CREATE TABLE IF NOT EXISTS table_Stations (
-	macaddr CHAR(17),
+	macaddr_sta CHAR(17),
+	last_time_sta DATETIME,
 	power INT,
 	packets_num INT,
 	bssid_sta CHAR(17),
-	probe VARCHAR(50),
-	key_com_sta INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+	probe VARCHAR(50)
 );
 
 
