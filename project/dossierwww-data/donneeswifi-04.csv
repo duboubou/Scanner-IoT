@@ -1,0 +1,7 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+1A:2F:DA:39:1A:06, 2019-02-06 19:05:34, 2019-02-06 19:05:34, 11,  54, OPN, ,   , -82,        1,        0,   0.  0.  0.  0,   8, FreeWifi, 
+1A:2F:DA:39:1A:05, 2019-02-06 19:05:37, 2019-02-06 19:05:37, 11,  54, WPA2, CCMP,PSK, -81,        1,        0,   0.  0.  0.  0,   0, , 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+

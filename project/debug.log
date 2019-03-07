@@ -1,0 +1,103 @@
+start le rtl_433
+
+Found 3 processes that could cause trouble.
+If airodump-ng, aireplay-ng or airtun-ng stops working after
+a short period of time, you may want to run 'airmon-ng check kill'
+
+  PID Name
+  351 avahi-daemon
+  356 avahi-daemon
+  359 dhcpcd
+
+PHY	Interface	Driver		Chipset
+
+phy0	wlan0		brcmfmac	Broadcom 43430
+
+
+ERROR adding monitor mode interface: command failed: Operation not supported (-95)
+Interface wlan0mon: 
+start le rtl_433
+
+start le rtl_433
+start le rtl_433
+Found 3 processes that could cause trouble.
+If airodump-ng, aireplay-ng or airtun-ng stops working after
+a short period of time, you may want to run 'airmon-ng check kill'
+
+  PID Name
+  351 avahi-daemon
+  356 avahi-daemon
+  359 dhcpcd
+
+PHY	Interface	Driver		Chipset
+
+
+phy0	wlan0		brcmfmac	Broadcom 43430
+
+
+
+ERROR adding monitor mode interface: command failed: Operation not supported (-95)
+Found 3 processes that could cause trouble.
+If airodump-ng, aireplay-ng or airtun-ng stops working after
+a short period of time, you may want to run 'airmon-ng check kill'
+
+Found 3 processes that could cause trouble.
+If airodump-ng, aireplay-ng or airtun-ng stops working after
+a short period of time, you may want to run 'airmon-ng check kill'
+
+  PID Name
+  351 avahi-daemon
+  356 avahi-daemon
+  359 dhcpcd
+
+PHY	Interface	Driver		Chipset
+
+phy0	wlan0		brcmfmac	Broadcom 43430
+  PID Name
+  351 avahi-daemon
+  356 avahi-daemon
+  359 dhcpcd
+
+PHY	Interface	Driver		Chipset
+
+
+
+ERROR adding monitor mode interface: command failed: Operation not supported (-95)
+phy0	wlan0		brcmfmac	Broadcom 43430
+
+
+ERROR adding monitor mode interface: command failed: Operation not supported (-95)
+Interface wlan0mon: 
+Interface wlan0mon: 
+Interface wlan0mon: 
+start le rtl_433
+
+Found 3 processes that could cause trouble.
+If airodump-ng, aireplay-ng or airtun-ng stops working after
+a short period of time, you may want to run 'airmon-ng check kill'
+
+  PID Name
+  351 avahi-daemon
+  356 avahi-daemon
+  359 dhcpcd
+
+PHY	Interface	Driver		Chipset
+
+phy0	wlan0		brcmfmac	Broadcom 43430
+
+
+ERROR adding monitor mode interface: command failed: Operation not supported (-95)
+Interface wlan0mon: 
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
+start le rtl_433
