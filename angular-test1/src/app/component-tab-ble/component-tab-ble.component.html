@@ -1,0 +1,28 @@
+<!--tableau ble avec fichier fichier.json-->
+<!--<div style="text-align:center">-->
+
+  <!-- <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Chercher dans la table">
+  </mat-form-field> -->
+
+
+  <div class="table_ble">
+  <table class="mat-elevation-z8">
+      <caption><img src="assets/ble.png" alt="" style="width:80px;height:70px;border-radius:80px;margin-left:auto;margin-right:auto;"></caption>
+      <thead style="font-size: 20px;">
+      <tr>
+        <th scope="col"> Name </th>
+        <th scope="col"> MAC Adr. </th>
+        <th scope="col"> Manu. </th>
+      </tr>  
+      </thead>
+      <tbody>
+          <div class="header_tab"></div>
+        <tr *ngFor="let element of content_tab_ble ">
+        <td> <div class="name">{{element.privacy}}</div></td>
+        <td> {{element.bssid}} </td>
+        <td> {{element.privacy}} </td>
+      </tr>
+      </tbody>  
+    </table>
+  </div>

@@ -1,0 +1,56 @@
+/**tableau ble avec fichier fichier.json */
+
+  /** barre de recherche 
+  .mat-form-field {
+    font-size: 14px;
+    width: 33%;
+  }*/
+  //div qui contient les données du tableau ble 
+  table {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    padding-top: 15px;
+  }
+  /** barre de recherche 
+  .mat-form-field {
+    font-size: 14px;
+    width: 33%;
+  }*/
+  
+  .mat-elevation-z8 {
+    //display: inline-block;
+    margin-right : 10px;
+  }
+  thead th:nth-child(1) {
+    width: 25%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 45%;
+    //word-wrap: break-word;
+  }
+  
+  thead th:nth-child(3) {
+    width: 30%;
+  }
+  
+  .name{
+    overflow-x: auto;
+    text-align: left;
+  }
+ .header_tab{
+   width: 400%;
+   border-bottom : 1px solid grey;
+   box-shadow: 1px 1px #888888;
+ }
+ //div qui contient la tab ble
+.table_ble{
+  display: inline-block;
+  width: 33%;
+  height: 390px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab ble
+  overflow-y: auto;
+  margin: 5px;
+  background-color: white;
+  
+}

@@ -57,5 +57,3 @@ else
 	insertion_BLE
 fi 
 
-
-s

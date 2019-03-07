@@ -1,0 +1,70 @@
+/**tableau wifi avec fichier fichier.json */
+/**.example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+  }*/
+  
+  //div qui contient les données du tableau 
+  table {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    padding-top: 15px;
+    padding-left: 5px;
+    
+  }
+  /** barre de recherche 
+  .mat-form-field {
+    font-size: 14px;
+    width: 33%;
+  }*/
+  
+  .mat-elevation-z8 {
+    //position: relative;
+    //display: inline-block;
+    margin-right : 10px;
+  }
+  thead th:nth-child(1) {
+    width: 25%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 40%;
+    //word-wrap: break-word;
+  }
+  
+  thead th:nth-child(3) {
+    width: 10%;
+  }
+  
+  thead th:nth-child(4) {
+    width: 15%;
+  }
+  .essid{
+    overflow-x: auto;
+    text-align: left;
+  }
+ .header_tab{
+   width: 368%;
+   border-bottom : 1px solid grey;
+   box-shadow: 1px 1px #888888;
+ }
+ //div qui contient la tab wifi
+.table_wifi{
+  display: inline-block;
+  width: 35%;
+  height: 390px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab wifi
+  overflow-y: auto;
+  background-color: white;
+  margin: 5px;
+}
