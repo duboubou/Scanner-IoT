@@ -65,15 +65,17 @@ export class AppComponent implements OnInit {
   /**bouton arreter le scan */
   handleClickstop(event: Event) {
     console.log('Click stop!', event)
+
+    this.stop_scan_php();
   }
 
   getDate(){
     let today = new Date();
-    this.date = today.getFullYear() + '-' 
-                + (today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1) + '-' 
-                + (today.getDate() < 10 ? '0' + today.getDate() : today.getDate()) + ' ' 
-                + (today.getHours() < 10 ? '0' + today.getHours() : today.getHours()) + ':' 
-                + (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()) + ':' 
+    this.date = today.getFullYear() + '-'
+                + (today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1) + '-'
+                + (today.getDate() < 10 ? '0' + today.getDate() : today.getDate()) + ' '
+                + (today.getHours() < 10 ? '0' + today.getHours() : today.getHours()) + ':'
+                + (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()) + ':'
                 + (today.getSeconds() < 10 ? '0' + today.getSeconds() : today.getSeconds());
   }
 
@@ -127,6 +129,14 @@ export class AppComponent implements OnInit {
 
   stop_scan_php() {
     this.scanLaunched = false;
+    this.service.getPeople('http://localhost/project/stop_scan.php')
+      .subscribe(
+        (res) => {
+          this.content_php = res['data'];
+          this.isInit = true;
+        },
+        (err) => { console.log(err) }
+      );
   }
 
   creation_bdd_php() {
