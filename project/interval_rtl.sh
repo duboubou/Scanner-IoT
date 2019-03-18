@@ -19,7 +19,7 @@ endline_RTL=$(wc -l $chemin$fichier | cut -f 1 -d ' ')
 echo $endline_RTL
 
 isoler_new_rtl () {
-	sed -n -e "$1, $2""p" $chemin$fichier > /tmp/rtl_new.csv
+	sed -n -e "$1, $2""p" $chemin$fichier > /var/www/html/project/dossier_rtl2/rtl_new.csv
 }
 
 
@@ -45,12 +45,12 @@ EOF2
 
 
 
-#Si le programme a trouvé une correspondance alors on écrit qu'à partir de cette ligne (AP)
+#Si le programme a trouvé une correspondance alors on écrit qu'à partir de cette ligne
 if [[ "$start_line_rtl" != "" ]]
 then
 	isoler_new_rtl $start_line_rtl $endline_RTL
-	insertion_RTL /tmp/rtl_new.csv
+	insertion_RTL /var/www/html/project/dossier_rtl2/rtl_new.csv
 else
 	isoler_lignes "2" "$endline_RTL" 
-	insertion_RTL /tmp/rtl_new.csv
+	insertion_RTL /var/www/html/project/dossier_rtl2/rtl_new.csv
 fi 

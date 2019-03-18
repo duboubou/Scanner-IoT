@@ -6,7 +6,7 @@ output="output.txt"
 informations="informations.csv"
 
 isoler_lignes () {
-	sed -n -e "$1, $2""p" $chemin"temp.txt" > /tmp/temp_bluetooth.txt
+	sed -n -e "$1, $2""p" $chemin"temp.txt" > /var/www/html/project/dossier_ble2/temp_bluetooth.txt
 }
 
 
@@ -25,13 +25,13 @@ INSERT INTO table_Bluetooth
 VALUES ("$ble_mac_adr", "$ble_nom", "$ble_info", "$ble_timestamp", NULL);
 EOF
 		
-	done < /tmp/temp_bluetooth.txt
+	done < /var/www/html/project/dossier_ble2/temp_bluetooth.txt
 }
 
 
 
-sed '/LE Scan/d' $chemin$output > /tmp/outputbis.txt #Supprime la ligne contenant LE Scan
-sort /tmp/outputbis.txt | uniq > $chemin"temp.txt"
+sed '/LE Scan/d' $chemin$output > /var/www/html/project/dossier_ble2/outputbis.txt #Supprime la ligne contenant LE Scan
+sort /var/www/html/project/dossier_ble2/outputbis.txt | uniq > $chemin"temp.txt"
 
 
 #Recherche dans la bdd la date du dernier objet scanné (la date la plus récente)

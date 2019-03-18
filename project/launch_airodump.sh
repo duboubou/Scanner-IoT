@@ -12,11 +12,11 @@ string_mon='mon'
 
 case "$1" in
   start|"")
-	sudo airmon-ng start "$2" 
-	sudo airodump-ng  -w /var/www/html/project/dossierwww-data/donneeswifi --output-format csv --write-interval 2 "$2$string_mon" 
+	airmon-ng start "$2" 
+	airodump-ng  -w /var/www/html/project/dossierwww-data/donneeswifi --output-format csv --write-interval 2 "$2$string_mon" 
 	;;
   stop)
-	sudo airmon-ng stop "$2$string_mon"
+	airmon-ng stop "$2$string_mon"
 	pkill airodump-ng
 	;;
   status)

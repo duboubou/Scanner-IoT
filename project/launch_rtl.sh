@@ -11,8 +11,7 @@
 case "$1" in
   start|"")
 	echo "start le rtl_433"
-	rtl_433 -G -F csv:/tmp/log_test.csv  &
-	#sh /var/www/html/project/test_insertion_rtl.sh 
+	rtl_433 -G -F csv:/var/www/html/project/dossier_rtl/fichier.csv &
 	;;
   stop)
 	killall -9 rtl_433

@@ -5,8 +5,17 @@
 #Prend en argument 1 : départ de ligne du csv à insérer dans mysql
 #Prend en argument 2: fin de ligne du csv à insérer dans mysql
 #Prend en argument 3 : nom du fichier temporaire
+
+#Récupère le dernier fichier csv créé dans le dossier du chemin
+chemin="/var/www/html/project/dossierwww-data/"
+cd $chemin
+fichier=$(ls -got | grep \.csv$ | head -1 | awk '{print $7}')
+echo "$fichier"
+chmod 777 $fichier
+
+
 isoler_lignes () {
-	sed -n -e "$1, $2""p" $chemin$fichier > /tmp/$3.csv
+	sed -n -e "$1, $2""p" $chemin$fichier > /var/www/html/project/dossier_wifi2/$3.csv
 }
 
 #Insère les lignes du Csv dans mysql pour les STA
@@ -25,7 +34,7 @@ insertion_STA () {
 mysql -u user_iot<<EOF2
 USE db_projet_iot
 INSERT INTO table_Stations
-VALUES ("$var_mac_sta", "$var_last_time_sta", "$var_power", "$var_packet_num", "$var_bssid_sta", "$var_probe");
+VALUES ("$var_mac_sta", "$var_last_time_sta", "$var_power", "$var_packet_num", "$var_bssid_sta", "$var_probe", NULL);
 EOF2
 		
 	done < $1
@@ -44,7 +53,9 @@ insertion_APs () {
 		var_authentication=$(echo $ligne | awk -F"," '{ print $8 }')
 		var_beacon=$(echo $ligne | awk -F"," '{ print $10 }')
 		var_essid=$(echo $ligne | awk -F"," '{ print $14 }')
-		var_nb_sta=$(grep -c "$var_bssid" /tmp/"temp_STA".csv)
+		var_nb_sta=$(grep -c "$var_bssid" /var/www/html/project/dossier_wifi2/"temp_STA".csv)
+
+
 		
 mysql -u user_iot <<EOF
 USE db_projet_iot
@@ -57,11 +68,6 @@ EOF
 }
 
 
-#Récupère le dernier fichier csv créé dans le dossier du chemin
-chemin="/var/www/html/project/dossierwww-data/"
-cd $chemin
-fichier=$(ls -got | grep \.csv$ | head -1 | awk '{print $7}')
-echo "$fichier"
 
 #Donne les droits au fichier nouvellement créé 
 chmod 777 $chemin$fichier
@@ -98,31 +104,22 @@ echo $start_line_sta
 if [[ "$start_line_sta" != "" ]]
 then
 	isoler_lignes "$start_line_sta" "$endline_STA" "temp_STA"
-	insertion_STA /tmp/"temp_STA".csv
+	insertion_STA /var/www/html/project/dossier_wifi2/"temp_STA".csv
 else
-	echo "Passage 1"
-	isoler_lignes $(($end_line_AP+1)) "$endline_STA" "temp_STA"
-	insertion_STA /tmp/"temp_STA".csv
+
+	isoler_lignes $(($end_line_AP+3)) "$endline_STA" "temp_STA"
+	insertion_STA /var/www/html/project/dossier_wifi2/"temp_STA".csv
 fi 
 
 #Si le programme a trouvé une correspondance alors on écrit qu'à partir de cette ligne (AP)
 if [[ "$start_line_ap" != "" ]]
 then
 	isoler_lignes "$start_line_ap" "$end_line_AP" "temp_AP"
-	insertion_APs /tmp/"temp_AP".csv
+	insertion_APs /var/www/html/project/dossier_wifi2/"temp_AP".csv
 else
 	echo "Passage 2"
 	isoler_lignes "3" "$end_line_AP" "temp_AP"
-	insertion_APs /tmp/"temp_AP".csv
+	insertion_APs /var/www/html/project/dossier_wifi2/"temp_AP".csv
 fi 
 
 
-gros="2018-12-26 20:06:20"
-petit="2018-12-26 19:07:23"
-
-if [[ "$gros" > "$petit" ]]
-then
-	echo "c'est bon"
-else
-	echo "bad"
-fi
