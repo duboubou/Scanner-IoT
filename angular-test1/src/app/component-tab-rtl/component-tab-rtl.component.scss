@@ -42,10 +42,13 @@
  //div qui contient la tab rtl
 .table_rtl{
   display: inline-block;
-  width: 29.3%;
+  width: 30.1%;
   height: 390px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab rtl
   overflow-y: auto;
   margin: 5px;
   background-color: white;
   
+}
+.fa-broadcast-tower{
+  margin-top: 5px;
 }

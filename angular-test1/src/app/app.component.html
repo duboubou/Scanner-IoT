@@ -1,25 +1,26 @@
 <!--The content below is only a placeholder and can be replaced.-->
-
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 <div class ="logo">
   <img src="assets/LOGO.png" alt="" style="width:100px;height:70px;border-radius:20px;">
   </div>
 <div style="text-align:center">
-  <h1>
+  <!-- <h1> -->
+      <h1 class="mat-display-1">
     Dashboard {{ title }}
   </h1>
   <!--pie chart-->
-  <app-chart-test></app-chart-test>
+  <app-chart-test [refresh]="refresh.asObservable()"></app-chart-test>
   <h1> </h1>
 
-  <!--boutton lancer le scan-->
-  <button mat-raised-button (click)="handleClickstart($event)">Lancer le scan</button>
-  <!--boutton arreter le scan-->
-  <button mat-raised-button (click)="handleClickstop($event)">Arreter le scan</button>
-  
-  <!--Progress spinner
-  <app-progress-spinner></app-progress-spinner>-->
+  <div>
+    <div id="status" [ngClass]="{'active': scanIsLaunched}"></div>
+    <!--boutton lancer le scan-->
+    <button mat-raised-button (click)="handleClickstart($event)">Lancer le scan</button>
+    <!--boutton arreter le scan-->
+    <button mat-raised-button (click)="handleClickstop($event)">Arreter le scan</button>
+  </div>
 
-  <!--spinner de chargement-->
+  <!--spinner de chargement
   <div class="spin">
   <mat-progress-spinner
          class="example-margin"
@@ -28,64 +29,37 @@
          [value]="value"
          [diameter]="50">
   </mat-progress-spinner>
-</div>
+</div>-->
 
   </div>
 
 <h1> </h1>
 
-<!--barre de recherche tableau
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Chercher dans la table">
-  </mat-form-field>-->
-
-  <!--tableau de molécules
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">-->
-
-    <!-- Position Column 
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>-->
-
-    <!-- Name Column 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>-->
-
-    <!-- Weight Column 
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>-->
-
-    <!-- Symbol Column 
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>-->
-    <!--
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>-->
-
-<!--tableau avec le json test : people.json
-<app-tab-json></app-tab-json>-->
-
 
 <div class="bloc_tableau">
 <!--tableau wifi avec le json wifi : fichier.json-->
-<app-component-tab-wifi></app-component-tab-wifi>
+<app-component-tab-wifi [date]="date" [refresh]="refresh.asObservable()"></app-component-tab-wifi>
 
 <!--tableau ble avec le json wifi : fichier.json-->
-<app-component-tab-ble></app-component-tab-ble>
-
+<app-component-tab-ble [date]="date" [refresh]="refresh.asObservable()"></app-component-tab-ble>
+<!-- <app-component-tab-ble></app-component-tab-ble> -->
 <!--tableau rtl avec le json wifi : fichier.json-->
-<app-component-tab-rtl></app-component-tab-rtl>
+<app-component-tab-rtl [date]="date" [refresh]="refresh.asObservable()"></app-component-tab-rtl>
+<!-- <app-component-tab-rtl></app-component-tab-rtl> -->
 </div>
+
 <!--<router-outlet></router-outlet>-->
 
+<div class="bloc_vulnerabilites">
+<!--vulnerabilites wifi-->
+<app-vulnerabilite-wifi></app-vulnerabilite-wifi>
+
+<!--vulnerabilites ble-->
+<app-vulnerabilite-ble></app-vulnerabilite-ble>
+
+<!--vulnerabilites rtl-->
+<app-vulnerabilite-rtl></app-vulnerabilite-rtl>
+</div>
 <hr><!--footer-->
 	<footer> <em> DUCHEMIN Bryan &nbsp; &nbsp;&nbsp;  PREMET Solenn &nbsp;&nbsp;&nbsp;  RATANAVANH Anais</em>
   </footer>

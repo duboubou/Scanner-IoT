@@ -23,7 +23,7 @@
     margin-right : 10px;
   }
   thead th:nth-child(1) {
-    width: 25%;
+    width: 45%;
   }
   
   thead th:nth-child(2) {
@@ -31,9 +31,9 @@
     //word-wrap: break-word;
   }
   
-  thead th:nth-child(3) {
-    width: 30%;
-  }
+  // thead th:nth-child(3) {
+  //   width: 30%;
+  // }
   
   .name{
     overflow-x: auto;
@@ -49,8 +49,11 @@
   display: inline-block;
   width: 33%;
   height: 390px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab ble
-  overflow-y: auto;
+  overflow-x: auto;
   margin: 5px;
   background-color: white;
   
+}
+.fa-bluetooth-b{
+  margin-top: 5px;
 }

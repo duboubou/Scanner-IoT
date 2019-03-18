@@ -1,0 +1,29 @@
+//div qui contient les données 
+table {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  .mat-elevation-z8 {
+    //display: inline-block;
+    margin-right : 10px;
+  }
+ 
+  
+ .header_tab{
+   width: 400%;
+   border-bottom : 1px solid grey;
+   box-shadow: 1px 1px #888888;
+ }
+ //div qui contient la tab 
+.vulnerabilites_wifi{
+  display: inline-block;
+  width: 35%;
+  height: 390px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab ble
+  overflow-y: auto;
+  margin: 5px;
+  background-color: white;
+  
+}

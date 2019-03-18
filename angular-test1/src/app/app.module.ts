@@ -13,7 +13,11 @@ import { ComponentTabWifiComponent } from './component-tab-wifi/component-tab-wi
 import { ComponentTabBleComponent } from './component-tab-ble/component-tab-ble.component';
 import { ReturnsJsonArrayService } from './returns-json-array.service';
 import { ComponentTabRtlComponent } from './component-tab-rtl/component-tab-rtl.component';
-//import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
+import { VulnerabiliteWifiComponent } from './vulnerabilite-wifi/vulnerabilite-wifi.component';
+import { VulnerabiliteBleComponent } from './vulnerabilite-ble/vulnerabilite-ble.component';
+import { VulnerabiliteRtlComponent } from './vulnerabilite-rtl/vulnerabilite-rtl.component';
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { ComponentTabRtlComponent } from './component-tab-rtl/component-tab-rtl.
     TabJsonComponent,
     ComponentTabWifiComponent,
     ComponentTabBleComponent,
-    ComponentTabRtlComponent
+    ComponentTabRtlComponent,
+    VulnerabiliteWifiComponent,
+    VulnerabiliteBleComponent,
+    VulnerabiliteRtlComponent
     
   ],
   imports: [

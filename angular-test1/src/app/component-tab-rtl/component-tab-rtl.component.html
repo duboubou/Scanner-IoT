@@ -1,23 +1,22 @@
-<!--tableau rtl avec fichier fichier.json-->
-
-
-
+<!--tableau rtl -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <div class="table_rtl">
       <table class="mat-elevation-z8">
-          <caption><img src="assets/rtl.png" alt="" style="width:80px;height:70px;border-radius:80px;margin-left:auto;margin-right:auto;"></caption>
+          <!-- <caption><img src="assets/rtl.png" alt="" style="width:80px;height:70px;border-radius:80px;margin-left:auto;margin-right:auto;"></caption> -->
+          <caption><i class="fas fa-broadcast-tower fa-4x"></i></caption>
           <thead style="font-size: 20px;">
           <tr>
             <th scope="col"> Name </th>
-            <th scope="col"> MAC Adr. </th>
             <th scope="col"> Temp. </th>
+            <th scope="col"> Humidity </th>
           </tr>  
           </thead>
           <tbody>
               <div class="header_tab"></div>
             <tr *ngFor="let element of content_tab_rtl ">
-            <td> <div class="name">{{element.privacy}}</div></td>
-            <td> {{element.bssid}} </td>
-            <td> {{element.nb_sta_co}} </td>
+            <td> <div class="name">{{element.product}}</div></td>
+            <td> {{element.temperature}} </td>
+            <td> {{element.humidity}} </td>
           </tr>
           </tbody>  
         </table>

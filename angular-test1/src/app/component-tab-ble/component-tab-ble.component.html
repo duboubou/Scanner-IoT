@@ -1,27 +1,27 @@
-<!--tableau ble avec fichier fichier.json-->
+<!--tableau ble -->
 <!--<div style="text-align:center">-->
 
   <!-- <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Chercher dans la table">
   </mat-form-field> -->
-
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <div class="table_ble">
   <table class="mat-elevation-z8">
-      <caption><img src="assets/ble.png" alt="" style="width:80px;height:70px;border-radius:80px;margin-left:auto;margin-right:auto;"></caption>
+      <!-- <caption><img src="assets/ble.png" alt="" style="width:80px;height:70px;border-radius:80px;margin-left:auto;margin-right:auto;"></caption> -->
+      <caption><i class="fab fa-bluetooth-b fa-4x"></i></caption>
       <thead style="font-size: 20px;">
       <tr>
         <th scope="col"> Name </th>
         <th scope="col"> MAC Adr. </th>
-        <th scope="col"> Manu. </th>
+        <!-- <th scope="col"> Manu. </th> -->
       </tr>  
       </thead>
       <tbody>
           <div class="header_tab"></div>
         <tr *ngFor="let element of content_tab_ble ">
-        <td> <div class="name">{{element.privacy}}</div></td>
-        <td> {{element.bssid}} </td>
-        <td> {{element.privacy}} </td>
+        <td> <div class="name">{{element.nom_ble}}</div></td>
+        <td> {{element.macaddr_ble}} </td>
+        <!-- <td> {{element.privacy}} </td> -->
       </tr>
       </tbody>  
     </table>
