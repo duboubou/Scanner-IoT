@@ -1,9 +1,7 @@
 <?php
-
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-
 function mysql_insert ($sql)
 {
     $base = mysql_connect ('localhost', 'user_iot', '');
@@ -39,19 +37,23 @@ function json_post($result, $nom_du_fichier)
 	// Fermeture du fichier
 	fclose($fichier);
 }
-
 //$today = $_GET['date']; 
 $today = "2019-03-14 15:51:00";
 print_r($today);
 
+
 json_post(mysql_requete("SELECT * FROM table_Accesspoint"),'/var/www/html/project/dossier_json/req_tab_wifi1.json');
 json_post(mysql_requete("SELECT bssid, essid, privacy, nb_sta_co, last_time_seen FROM table_Accesspoint WHERE last_time_seen > \"$today\""),'/var/www/html/project/dossier_json/req_tab_wifi2.json');
 //json_post(mysql_requete("SELECT * FROM table_Stations WHERE macaddr_sta =inputuser AND last_time_sta > \"$today\""),'/var/www/html/project/dossier_json/req_info_wifi.json');
-json_post(mysql_requete("SELECT COUNT(*) FROM table_Accesspoint WHERE last_time_seen > \"$today\""), '/var/www/html/project/dossier_json/req_cam1.json');
+json_post(mysql_requete("SELECT COUNT(*) As cam_accesspoint FROM table_Accesspoint WHERE last_time_seen > \"$today\""), '/var/www/html/project/dossier_json/req_cam1.json');
 //json_post(mysql_requete("SELECT COUNT(*) FROM table_Accesspoint WHERE last_time_seen > '2019-03-13 14:38:36'"), '/var/www/html/project/dossier_json/req_cam1.json');
-json_post(mysql_requete("SELECT COUNT(*) FROM table_Stations WHERE last_time_sta > \"$today\""), '/var/www/html/project/dossier_json/req_cam2.json');
-json_post(mysql_requete("SELECT COUNT(*) FROM table_Rtl WHERE timestamp > \"$today\""), '/var/www/html/project/dossier_json/req_cam3.json');
-json_post(mysql_requete("SELECT COUNT(*) FROM table_Bluetooth WHERE last_time_ble > \"$today\""), '/var/www/html/project/dossier_json/req_cam4.json');
+json_post(mysql_requete("SELECT COUNT(*) As cam_stations FROM table_Stations WHERE last_time_sta > \"$today\""), '/var/www/html/project/dossier_json/req_cam2.json');
+json_post(mysql_requete("SELECT COUNT(*) As cam_rtl FROM table_Rtl WHERE timestamp > \"$today\""), '/var/www/html/project/dossier_json/req_cam3.json');
+json_post(mysql_requete("SELECT COUNT(*) As cam_ble FROM table_Bluetooth WHERE last_time_ble > \"$today\""), '/var/www/html/project/dossier_json/req_cam4.json');
 json_post(mysql_requete("SELECT macaddr_ble, nom_ble, last_time_ble FROM table_Bluetooth WHERE last_time_ble > \"$today\""), '/var/www/html/project/dossier_json/req_tab_ble1.json');
 json_post(mysql_requete("SELECT product, temperature, humidity, timestamp FROM table_Rtl WHERE timestamp > \"$today\""), '/var/www/html/project/dossier_json/req_tab_rtl.json');
+
+json_post(mysql_requete("SELECT ROUND(AVG(temperature),2) As moy_temp FROM table_Rtl WHERE temperature != 0 AND temperature < 70 AND temperature > -20"),'/var/www/html/project/dossier_json/req_temperature.json');
+json_post(mysql_requete("SELECT AVG(humidity) As moy_humidity FROM table_Rtl WHERE humidity != 0"),'/var/www/html/project/dossier_json/req_humidity.json');
+
 ?>
