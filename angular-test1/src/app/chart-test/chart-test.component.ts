@@ -1,164 +1,111 @@
 /**pie chart */
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { subscribeOn } from 'rxjs/operators';
 import { ReturnsJsonArrayService } from 'src/app/returns-json-array.service';
+import { HttpClient } from '@angular/common/http';
 
 declare const Chart;
+  
+interface MyObj{
+  myString: string;
+  myNumber: number;
+}
+interface MyObj2{
+  myString2: string;
+  myNumber2: number;
+}
+interface MyObj3{
+  myString3: string;
+  myNumber3: number;
+}
+interface MyObj4{
+  myString4: string;
+  myNumber4: number;
+}
 
 @Component({
   selector: 'app-chart-test',
   templateUrl: './chart-test.component.html',
   styleUrls: ['./chart-test.component.scss']
 })
+
+
+
 export class ChartTestComponent implements OnInit {
-  content_cam_wifi = 0;
-  content_cam_stations = 0;
-  content_cam_ble = 0;
-  content_cam_rtl = 0;
-  content_tab_rtl: any;
-  content_tab_ble: any;
-  content_tab_wifi2: any;
-  content_tab_stations: any;
   isInit = false;
   ip = '172.20.10.2';
+  nb_accesspoint:any;
+  nb_stations:any;
+  nb_ble:any;
+  nb_rtl:any;
 
   private refreshSubscription: any;
 
   @Input() refresh: Observable<void>;
 
   constructor(private service: ReturnsJsonArrayService) { }
-  
+
   ngOnInit() {
-    setTimeout(() => {
-      this.createChart();
-    }, 1000)
-    this.refreshSubscription = this.refresh.subscribe(() => {
-      this.tab_wifi();
-      this.liste_cam_wifi_stations();
-      this.tab_ble();
-      this.tab_rtl();
-      this.calculPourcentage();
-      setTimeout(this.createChart, 1000)
+    // setTimeout(() => {
+    //   this.createChart();
+    // }, 1000)
+    // this.refreshSubscription = this.refresh.subscribe(() => {
+    //   this.tab_wifi();
+    //   this.liste_cam_wifi_stations();
+    //   this.tab_ble();
+    //   this.tab_rtl();
+    //  // this.calculPourcentage();
+    //   setTimeout(this.createChart, 1000)
+    // });
+
+    this.service.getJSON().subscribe(data => {
+      console.log(data._body.toString());
+      let obj = JSON.parse(data._body.toString());
+      console.log(obj.cam_accesspoint);
+      this.nb_accesspoint = obj.cam_accesspoint;
+  });
+
+  console.log("coucoucoucou");
+  console.log(this.nb_accesspoint);
+
+    this.service.getJSON2().subscribe(data2 => {
+      console.log(data2._body.toString());
+      let obj2 = JSON.parse(data2._body.toString());
+      console.log(obj2.cam_stations);
+
     });
-  }
+
+
+    this.service.getJSON3().subscribe(data3 => {
+      console.log(data3._body.toString());
+      let obj3 = JSON.parse(data3._body.toString());
+      console.log(obj3.cam_rtl);
+    });
+
+
+    this.service.getJSON4().subscribe(data4 => {
+      console.log(data4._body.toString());
+      let obj4 = JSON.parse(data4._body.toString());
+      console.log(obj4.cam_ble);
+    });
+
+    // this.createChart();
+    // console.log("Bonjour");
+ //   this.recup_accesspoint();
+
+}
+
+  // recup_accesspoint() {
+  //   this.service.getJSON().subscribe(data => {
+  //     console.log(data._body.toString());
+  //     let obj = JSON.parse(data._body.toString());
+  //     console.log(obj.cam_accesspoint);
+  // });
+  // }
 
   ngOnDestroy() {
     this.refreshSubscription.unsubscribe();
-  }
-
-  calculPourcentage() {
-    let total = 0;
-  //   console.log("pourcent");
-  //   console.log(this.content_tab_ble);
-  //   console.log("fin");
-  // if (this.content_tab_ble) {
-  //   this.content_tab_ble.forEach(element => {
-  //     this.content_cam_ble++;
-  //   });
-  // }
-
-  // if (this.content_tab_wifi2) {
-  //   this.content_tab_wifi2.forEach(element => {
-  //     this.content_cam_wifi++;
-  //   });
-  // }
-
-  
-  // if (this.content_tab_rtl) {
-  //   this.content_tab_rtl.forEach(element => {
-  //     this.content_cam_rtl++;
-  //   });
-  // }
-
-  // if (this.content_tab_stations) {
-  //   this.content_tab_stations.forEach(element => {
-  //     this.content_cam_stations++;
-  //   });
-  // }
-  
-  //   total += this.content_cam_wifi;
-  //   total += this.content_cam_stations;
-  //   total += this.content_cam_ble;
-  //   total += this.content_cam_rtl;
-  
-  //    console.log(this.content_tab_wifi2);
-  // //   console.log(this.content_tab_wifi2);
-  //    console.log(this.content_tab_stations);
-  //    console.log(this.content_tab_rtl);
-  //   total = this.content_tab_ble + this.content_tab_rtl + this.content_tab_stations + this.content_tab_wifi2;
-  //   console.log(total);
-  //   this.content_cam_wifi = this.content_cam_wifi / total;
-  //   this.content_cam_stations = this.content_cam_stations / total;
-  //   this.content_cam_ble = this.content_cam_ble / total;
-  //   this.content_cam_rtl = this.content_cam_rtl / total;
-    //this.createChart();
-    console.log(this.content_tab_wifi2); //Affiche une erreur Undifined
-    //total = this.content_tab_wifi2 element.cam_ble qui vaut 67 + element.wifi qui vaut 78 par ex
-  }
-
-
-  tab_wifi() {
-    // console.log('http://'  + this.ip + '/project/dossier_json/req_tab_wifi2.json');
-    this.service.getRequest('http://' + this.ip + '/project/dossier_json/req_cam1.json')
-      .subscribe(
-        (data) => {
-          this.content_tab_wifi2 = Object.assign({}, data.json());
-          console.log("coucou");
-          console.log(this.content_tab_wifi2);
-          console.log("finfin");
-         // this.dateFilter();
-        },
-        (err) => { console.log(err) }
-      );
-      this.calculPourcentage();
-  }
-  liste_cam_wifi_stations() {
-    // console.log('http://'  + this.ip + '/project/dossier_json/req_cam2.json');
-    this.service.getRequest('http://' + this.ip + '/project/dossier_json/req_cam2.json')
-      .subscribe(
-        (data) => {
-          this.content_cam_stations = data.json();
-         // this.isInit = true;
-        },
-        (err) => { console.log(err) }
-      );
-  }
-  tab_rtl(){
-    // console.log('http://'  + this.ip + '/project/dossier_json/req_tab_rtl.json');
-    this.service.getRequest('http://'  + this.ip + '/project/dossier_json/req_cam3.json')
-    .subscribe(
-      (data) => {
-        this.content_tab_rtl = data.json();
-       //console.log(this.content_tab_rtl);
-       // this.dateFilter();
-      },
-      (err) => {console.log(err)}
-    );
-  }
-  tab_ble(){
-    // console.log('http://'  + this.ip + '/project/dossier_json/req_tab_ble1.json');
-    this.service.getRequest('http://'  + this.ip + '/project/dossier_json/req_cam4.json')
-    .subscribe(
-      (data) => {
-        this.content_tab_ble = data.json();
-       // this.dateFilter();
-      },
-      (err) => {console.log(err)}
-    );
-  }
-
-  dateFilter() {
-    // var dateClick = new Date(this.date);
-    // // console.log(dateClick);
-
-    // // console.log(this.content_tab_wifi2);
-    // this.content_tab_wifi2.filter((element) => {
-    //   var dateElement = new Date(element.last_time_seen);
-    //   // console.log(element.last_time_seen);
-    //   return dateElement >= dateClick;
-    // });
-    // // console.log(this.content_tab_wifi2);
   }
 
   createChart() {
@@ -171,7 +118,7 @@ export class ChartTestComponent implements OnInit {
         datasets: [{
 
           //data: [25, 35, 30, 10],
-          data: [this.content_cam_wifi, this.content_cam_stations, this.content_cam_ble, this.content_cam_rtl],
+          data: [obj.cam_accesspoint, obj2.cam_stations, obj3.cam_rtl, obj4.cam_ble],
 
           backgroundColor: [
             'rgba(255, 99, 132,.7)',
