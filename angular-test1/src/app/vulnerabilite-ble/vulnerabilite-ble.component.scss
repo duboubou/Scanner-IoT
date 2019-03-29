@@ -1,0 +1,57 @@
+//div qui contient les données 
+table {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  .mat-elevation-z8 {
+    //display: inline-block;
+    margin-right : 10px;
+  }
+ 
+
+ .header_tab{
+   width: 400%;
+   border-bottom : 1px solid grey;
+   box-shadow: 1px 1px #888888;
+ }
+ //div qui contient la tab 
+.vulnerabilites_ble{
+  display: inline-block;
+  width: 33.1%;
+  height: 400px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab ble
+  overflow-y: auto;
+  //margin: 5px;
+  background-color: white;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  margin-right: 1px;
+  
+}
+.ampoule{
+  height: 38%;
+  width: 100%;
+  margin-top: 3px;
+  text-align: center;
+  font-size: 20px;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.bipper{
+  margin-top: 10px;
+  height: 35%;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+ 
+}
+//checkbox couleur 
+input {
+  margin: .4rem;
+}
+.colors{
+  display: inline-block;
+}

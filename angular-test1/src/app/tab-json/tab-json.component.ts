@@ -12,6 +12,7 @@ import { ReturnsJsonArrayService } from 'src/app/returns-json-array.service';
 export class TabJsonComponent implements OnInit{
   title = 'app works!';
   content = "";
+  ip = '172.20.10.2';
 
    data: Observable<Array<any>>;
 
@@ -24,7 +25,7 @@ export class TabJsonComponent implements OnInit{
    }
 
    test(){
-    this.service.getPeople('./assets/people.json')
+    this.service.getPeople('http://'  + this.ip + '/project/dossier_json/assets/people.json')
     .subscribe(
       (data) => {
         this.content = data;

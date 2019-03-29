@@ -1,0 +1,80 @@
+//div qui contient les données 
+table {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  .mat-elevation-z8 {
+    //display: inline-block;
+    margin-right : 10px;
+  }
+ 
+  
+ .header_tab{
+   width: 400%;
+   border-bottom : 1px solid grey;
+   box-shadow: 1px 1px #888888;
+ }
+ //div qui contient la tab 
+.vulnerabilites_rtl{
+  display: inline-block;
+  width: 30.8%;
+  height: 400px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab ble
+  overflow-y: auto;
+  //margin: 5px;
+  background-color: white;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  margin-right: 1px;
+  
+}
+.thermo{
+  //margin-right:auto;
+  margin-left: 42%;
+  width: 15%;
+  height: 60%;
+  display : inline-block;
+  margin-top: 15px;
+  //background-color: red;
+  
+}
+.temperature{
+  display : inline-block;
+  //width: 250px;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 0px;
+ // background-color: green;
+  margin-left: 80%;
+  
+}
+.humidite{
+  display: inline-block;
+  margin-left: 41%;
+  width: 20%;
+  height: 60%;
+  margin-top: 30px;
+ // background-color: pink;
+}
+.humidity{
+  display : inline-block;
+  //width: 250px;
+  width: 100%;
+  font-size: 20px;
+  margin-left:180px;
+  margin-top: 5px;
+  
+}
+.tab_thermo{
+  height: 44%;
+  width:100%;
+}
+  
+.tab_humidity{
+  height: 40%;
+  width:100%;
+}

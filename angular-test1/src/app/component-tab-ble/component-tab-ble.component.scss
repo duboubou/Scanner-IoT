@@ -21,36 +21,43 @@
   .mat-elevation-z8 {
     //display: inline-block;
     margin-right : 10px;
+    
   }
   thead th:nth-child(1) {
-    width: 25%;
+    width: 45%;
+    font-weight: normal;
   }
   
   thead th:nth-child(2) {
     width: 45%;
-    //word-wrap: break-word;
+    font-weight: normal;
   }
   
-  thead th:nth-child(3) {
-    width: 30%;
-  }
   
   .name{
-    overflow-x: auto;
+    //overflow-x: auto;
     text-align: left;
   }
  .header_tab{
-   width: 400%;
+   width: 201.5%;
    border-bottom : 1px solid grey;
    box-shadow: 1px 1px #888888;
  }
  //div qui contient la tab ble
 .table_ble{
   display: inline-block;
-  width: 33%;
-  height: 390px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab ble
+  width: 33.1%;
+  height: 400px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab ble
   overflow-y: auto;
-  margin: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  margin-right: 1px;
   background-color: white;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
   
+}
+.fa-bluetooth-b{
+  margin-top: 5px;
+  margin-bottom : 3px;
 }

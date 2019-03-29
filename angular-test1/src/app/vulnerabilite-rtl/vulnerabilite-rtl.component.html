@@ -1,0 +1,29 @@
+<!--tableau pour vulnerabilites rtl -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<div class="vulnerabilites_rtl">
+    <table class="mat-elevation-z8">
+        <thead style="font-size: 30px; font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif">
+          Vulnérabilités RTL
+        </thead>
+        <tbody>
+            <!--<div class="header_tab"></div>-->
+        </tbody>  
+      </table>
+      <div class='tab_thermo'>
+     <div class='thermo'> <!--<img src="assets/thermo.png" alt="" style="width:130px;height:130px;">-->
+      <i class="fas fa-thermometer-three-quarters fa-6x"></i> 
+    </div>
+    <tr *ngFor="let element of content_tab_temperature ">
+     <div class='temperature'><b>Température :</b> {{element.moy_temp}}° </div>
+    </tr>
+  </div>
+  <div class ='tab_humidity'>
+     <div class='humidite'>
+       <!-- <img src="assets/humidity.png" alt="" style="width:130px;height:130px;"> -->
+       <i class="fas fa-tint fa-6x"></i>
+     </div>
+     <tr *ngFor="let element of content_tab_humidity "> 
+    <div class='humidity'><b>Humidité :</b> {{element.moy_humidity}} %</div>
+  </tr>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<!--tableau pour vulnerabilites ble -->
+
+<div class="vulnerabilites_ble">
+  <table class="mat-elevation-z8">
+      <thead style="font-size: 30px; font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;">
+          Vulnérabilités BLE
+      </thead>
+      <tbody>
+      </tbody>  
+    </table>
+    <div class='ampoule'><br>
+      <b>Nom :</b> Ampoule Fuyutec <br>
+      <b>Mac Adr. :</b> 88:C2:55:00:FF:50 <br>
+      <b>Couleur :</b> <div class="colors">&nbsp;
+        <!-- <input type="checkbox" id="rouge" name="rouge">
+        <label for="rouge" style="color:red">Rouge</label>
+        <input type="checkbox" id="bleu" name="bleu">
+        <label for="bleu" style="color:blue">Bleu</label>
+        <input type="checkbox" id="vert" name="vert">
+        <label for="vert" style="color:green">Vert</label> -->
+        <button mat-raised-button (click)="handleClickBleu($event)">Bleu</button>&nbsp;
+        <button mat-raised-button (click)="handleClickRouge($event)">Rouge</button>&nbsp;
+        <button mat-raised-button (click)="handleClickVert($event)">Vert</button>&nbsp;
+      </div> 
+     
+      <br>
+      <b>Allumer :</b> &nbsp;
+      <!-- <INPUT type= "radio" name="on-off" value="on"> ON
+        <INPUT type= "radio" name="on-off" value="off"> OFF -->
+          <button mat-raised-button (click)="handleClickON($event)" style="margin-top:5px;">ON</button> &nbsp;
+          <button mat-raised-button (click)="handleClickOFF($event)">OFF</button>
+          <br>
+    </div>
+    <br>
+    <hr>
+    <div class='bipper'><br>
+        <b>Nom :</b> Bipper MLE15 <br>
+        <b>Mac Adr. :</b> FF:FF:B0:00:F7:BA <br>
+        <b>Sonnerie :</b> &nbsp;
+        <!-- <INPUT type= "radio" name="on-off" value="on" (click)="setradio('on')" ngModel> ON
+          <INPUT type= "radio" name="on-off" value="off" (click)="setradio('off')" ngModel> OFF -->
+            <button mat-raised-button (click)="handleClickONBip($event)">ON</button>&nbsp;&nbsp;
+            <button mat-raised-button (click)="handleClickOFFBip($event)">OFF</button>
+            <br>
+    </div>
+  </div>

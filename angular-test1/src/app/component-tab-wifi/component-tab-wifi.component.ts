@@ -1,14 +1,9 @@
-/**tableau wifi avec fichier fichier.json */
-import { Component, OnInit } from '@angular/core';
+/**tableau wifi  */
+import { Component, OnInit, Input } from '@angular/core';
 import { ReturnsJsonArrayService } from 'src/app/returns-json-array.service';
+import { Observable } from 'rxjs';
+import { subscribeOn } from 'rxjs/operators';
 
-/** 
-export interface PeriodicElement {
-   essid: string;
-   bssid: string;
-   privacy: string;
-   nb_sta_co: number;
-}*/
 
 @Component({
   selector: 'app-component-tab-wifi',
@@ -18,28 +13,52 @@ export interface PeriodicElement {
 })
 export class ComponentTabWifiComponent implements OnInit {
 
-  content_tab_wifi="";
+  content_tab_wifi: any;
   isInit = false;
+  ip = '172.20.10.2';
 
-  constructor(private service: ReturnsJsonArrayService) { 
+  private refreshSubscription: any;
+
+  @Input() date;
+  @Input() refresh: Observable<void>;
+
+  constructor(private service: ReturnsJsonArrayService) {
 
   }
 
   ngOnInit() {
-    this.tab_wifi();
+    this.refreshSubscription = this.refresh.subscribe(() => this.tab_wifi())
+  }
+
+  ngOnDestroy() {
+    this.refreshSubscription.unsubscribe();
   }
 
 
-  tab_wifi(){
-    this.service.getPeople('./assets/fichier.json')
-    .subscribe(
-      (data) => {
-        this.content_tab_wifi = data;
-        this.isInit = true;
-        // console.log('content_tab_wifi: ' + this.content_tab_wifi);
-      },
-      (err) => {console.log(err)}
-    );
-}
+  dateFilter() {
+    var dateClick = new Date(this.date);
+    // console.log(dateClick);
+
+    // console.log(this.content_tab_wifi);
+    this.content_tab_wifi.filter((element) => {
+      var dateElement = new Date(element.last_time_seen);
+      // console.log(element.last_time_seen);
+      return dateElement >= dateClick;
+    });
+    // console.log(this.content_tab_wifi);
+  }
+
+
+  tab_wifi() {
+    // console.log('http://'  + this.ip + '/project/dossier_json/req_tab_wifi2.json');
+    this.service.getRequest('http://' + this.ip + '/project/dossier_json/req_tab_wifi2.json')
+      .subscribe(
+        (data) => {
+          this.content_tab_wifi = data.json();
+          this.dateFilter();
+        },
+        (err) => { console.log(err) }
+      );
+  }
 
 }

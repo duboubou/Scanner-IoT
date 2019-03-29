@@ -36,35 +36,50 @@
   }
   thead th:nth-child(1) {
     width: 25%;
+    font-weight: normal;
   }
   
   thead th:nth-child(2) {
     width: 40%;
-    //word-wrap: break-word;
+    font-weight: normal;
   }
   
   thead th:nth-child(3) {
     width: 10%;
+    font-weight: normal;
   }
   
   thead th:nth-child(4) {
     width: 15%;
+    font-weight: normal;
   }
   .essid{
     overflow-x: auto;
     text-align: left;
   }
  .header_tab{
-   width: 368%;
+   width: 366%;
    border-bottom : 1px solid grey;
    box-shadow: 1px 1px #888888;
+   
  }
  //div qui contient la tab wifi
 .table_wifi{
   display: inline-block;
   width: 35%;
-  height: 390px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab wifi
+  height: 400px;//à commenter pour que la div bloc-tableau s'adapte à la taille de tab wifi
   overflow-y: auto;
   background-color: white;
-  margin: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  margin-right: 1px;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.fa-wifi{
+  margin-top: 5px;
+  margin-bottom : 3px;
+}
+tbody{
+  overflow-y: auto;
 }
