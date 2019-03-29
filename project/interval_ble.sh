@@ -54,7 +54,6 @@ then
 else
 	echo "Passage 2"
 	isoler_lignes "1" "$endline_BLE"
-	echo "Voila""$endline_BLE"
 	insertion_BLE
 fi 
 

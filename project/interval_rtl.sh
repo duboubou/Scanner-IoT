@@ -7,6 +7,7 @@ echo "$last_date_rtl"
 #Récupère le dernier fichier csv créé dans le dossier du chemin
 chemin="/var/www/html/project/dossier_rtl/"
 cd $chemin
+
 fichier=$(ls -got | grep \.csv$ | head -1 | awk '{print $7}')
 echo "$fichier"
 
@@ -42,7 +43,10 @@ EOF2
 	done < $1
 }
 
-
+sudo touch /var/www/html/project/dossier_rtl2/rtl_new.csv
+sudo touch /var/www/html/project/dossier_rtl/fichier.csv
+sudo chmod 777 /var/www/html/project/dossier_rtl2/rtl_new.csv
+sudo chmod 777 /var/www/html/project/dossier_rtl/fichier.csv
 
 
 #Si le programme a trouvé une correspondance alors on écrit qu'à partir de cette ligne
@@ -54,3 +58,5 @@ else
 	isoler_lignes "2" "$endline_RTL" 
 	insertion_RTL /var/www/html/project/dossier_rtl2/rtl_new.csv
 fi 
+
+
